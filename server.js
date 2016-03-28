@@ -13,8 +13,8 @@ io.on('connection', function (socket) {
     socket.on('message', function (message) {
         console.log('Message received: ' + message.text);
 
-        // emit event to other connections.
-        socket.broadcast.emit('message', message);
+        // emit event to yourself + other connections.
+        io.emit('message', message);
     });
 
     // new events
